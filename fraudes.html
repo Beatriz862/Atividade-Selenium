@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fraudes</title>
+  <style>
+    :root {
+      --bg: #08122b;
+      --text: #eef3ff;
+      --muted: #9fb2d3;
+      --accent: #2f8cff;
+      --card: #0d1b36;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #08122b 0%, #0d1c38 100%);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .screen {
+      width: min(380px, 100%);
+      background: #0d1b36;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+      display: grid;
+      gap: 18px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      padding: 20px 20px 0;
+      gap: 14px;
+    }
+
+    .back {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .header-text {
+      display: grid;
+      gap: 6px;
+    }
+
+    .title {
+      font-size: 1.35rem;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .search-card {
+      margin: 0 20px;
+      padding: 18px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 24px;
+    }
+
+    .search-card input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+    }
+
+    .stats {
+      margin: 0 20px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .stat-pill {
+      padding: 12px 16px;
+      border-radius: 20px;
+      background: rgba(47,140,255,0.15);
+      font-size: 0.92rem;
+      color: #cfe8ff;
+      display: inline-flex;
+      gap: 10px;
+    }
+
+    .list {
+      display: grid;
+      gap: 12px;
+      padding: 0 20px 0 20px;
+    }
+
+    .fraud-card {
+      padding: 18px;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      display: grid;
+      gap: 10px;
+    }
+
+    .fraud-card strong {
+      font-size: 1rem;
+    }
+
+    .fraud-card span {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .actions {
+      display: grid;
+      gap: 12px;
+      padding: 0 20px 22px;
+    }
+
+    .button {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--accent), #1c5bbd);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <main class="screen">
+    <div class="topbar">
+      <button class="back" onclick="window.history.back()">←</button>
+      <div class="header-text">
+        <div class="title">Principais Fraudes digitais no brasil</div>
+        <div class="subtitle">Conheça os golpes mais comuns, suas características e as melhores formas de se proteger.</div>
+      </div>
+    </div>
+
+    <div class="search-card">
+      <input type="text" placeholder="Pesquisar por tipo de golpe, palavra ou fraude...">
+    </div>
+
+    <div class="stats">
+      <div class="stat-pill">124% de aumento em 2024</div>
+      <div class="stat-pill">55% em 1 mês</div>
+      <div class="stat-pill">Atualizado em Mar 2025</div>
+    </div>
+
+    <div class="list">
+      <div class="fraud-card">
+        <strong>Golpe do WhatsApp</strong>
+        <span>Mensagens que pedem código ou transferências para perfis falsos.</span>
+      </div>
+      <div class="fraud-card">
+        <strong>Golpe de Cartão</strong>
+        <span>Operadores solicitam dados do cartão para 'verificação'.</span>
+      </div>
+      <div class="fraud-card">
+        <strong>Falso suporte</strong>
+        <span>Chamadas que fingem ser de bancos e tentam obter suas senhas.</span>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="button" onclick="window.location.href='home.html'">Voltar ao início</button>
+      <button class="button" onclick="window.location.href='menu.html'">Abrir menu</button>
+    </div>
+  </main>
+</body>
+</html>

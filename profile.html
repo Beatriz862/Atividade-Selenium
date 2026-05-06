@@ -1,0 +1,154 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil</title>
+  <style>
+    :root {
+      --bg: #08122b;
+      --surface: rgba(255,255,255,0.06);
+      --text: #eef3ff;
+      --muted: #9fb2d3;
+      --accent: #2f8cff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #08122b 0%, #0d1c38 100%);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .screen {
+      width: min(380px, 100%);
+      background: #0d1b36;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+    }
+
+    .header {
+      padding: 24px 24px 16px;
+    }
+
+    .title {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .content {
+      padding: 18px 24px 24px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .avatar-block {
+      display: flex;
+      justify-content: center;
+      margin-top: 8px;
+    }
+
+    .avatar {
+      width: 88px;
+      height: 88px;
+      border-radius: 24px;
+      background: linear-gradient(135deg, rgba(47,140,255,0.34), rgba(38,179,255,0.2));
+      display: grid;
+      place-items: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 20px;
+      display: grid;
+      gap: 16px;
+    }
+
+    .field {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .field span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .field strong {
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .status-line {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #64d5ff;
+      font-size: 0.95rem;
+    }
+
+    .status-line::before {
+      content: '•';
+      font-size: 1.2rem;
+      color: #64d5ff;
+    }
+
+    .button {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, var(--accent), #1c5bbd);
+    }
+
+    .secondary {
+      background: rgba(255,255,255,0.08);
+      color: var(--text);
+    }
+  </style>
+</head>
+<body>
+  <main class="screen">
+    <section class="header">
+      <div class="title">Perfil</div>
+      <div class="subtitle">Verifique suas informações e conclua seu cadastro.</div>
+    </section>
+    <section class="content">
+      <div class="avatar-block">
+        <div class="avatar">A</div>
+      </div>
+      <div class="card">
+        <div class="field"><span>Nome</span><strong>Antonio Silva</strong></div>
+        <div class="field"><span>E-mail</span><strong>teste@gmail.com</strong></div>
+        <div class="field"><span>Telefone</span><strong>(61) 99999-9999</strong></div>
+        <div class="status-line">Completo</div>
+      </div>
+      <button class="button" onclick="window.location.href='home.html'">Completo</button>
+      <button class="button secondary" onclick="window.location.href='menu.html'">Abrir menu</button>
+    </section>
+  </main>
+</body>
+</html>

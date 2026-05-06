@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro</title>
+  <style>
+    :root {
+      --bg: #08122b;
+      --text: #eef3ff;
+      --muted: #9fb2d3;
+      --accent: #2f8cff;
+      --surface: rgba(255,255,255,0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top left, rgba(47,140,255,0.14), transparent 24%),
+                  linear-gradient(180deg, #08122b 0%, #0d1c38 100%);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .screen {
+      width: min(380px, 100%);
+      border-radius: 36px;
+      background: #0e1c3a;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+    }
+
+    .hero {
+      padding: 28px 24px 22px;
+      background: linear-gradient(180deg, rgba(47,140,255,0.18), transparent 80%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      right: -38px;
+      top: -34px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .content {
+      padding: 24px;
+      display: grid;
+      gap: 16px;
+      background: #0c1a34;
+    }
+
+    .input-group {
+      display: grid;
+      gap: 10px;
+    }
+
+    label {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    input {
+      width: 100%;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      padding: 16px;
+      font-size: 0.95rem;
+    }
+
+    input::placeholder {
+      color: rgba(255,255,255,0.48);
+    }
+
+    .button-primary {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--accent), #1c5bbd);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .link-row {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .link-row a {
+      color: #a8c7ff;
+      text-decoration: none;
+    }
+
+    .error {
+      color: #ff7a7a;
+      min-height: 18px;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="screen">
+    <section class="hero">
+      <h1>Crie sua conta</h1>
+      <p>Cadastre-se para começar a usar o app e proteger suas finanças.</p>
+    </section>
+
+    <section class="content">
+      <div class="input-group">
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" placeholder="Nome completo">
+      </div>
+      <div class="input-group">
+        <label for="email">E-mail</label>
+        <input type="text" id="email" placeholder="seu@email.com">
+        <div id="erroEmail" class="error"></div>
+      </div>
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" placeholder="Senha">
+      </div>
+      <div class="input-group">
+        <label for="senha2">Confirmar senha</label>
+        <input type="password" id="senha2" placeholder="Confirmar senha">
+      </div>
+      <button class="button-primary" onclick="criarConta()">Continuar</button>
+      <div class="link-row">Já tem conta? <a href="index.html">Entrar</a></div>
+    </section>
+  </main>
+
+  <script>
+    function criarConta() {
+      const nome = document.getElementById('nome').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const senha = document.getElementById('senha').value;
+      const senha2 = document.getElementById('senha2').value;
+      const erroEmail = document.getElementById('erroEmail');
+      erroEmail.textContent = '';
+
+      if (!email.includes('@')) {
+        erroEmail.textContent = 'Digite um e-mail válido.';
+        return;
+      }
+
+      if (senha.length < 3 || senha !== senha2) {
+        erroEmail.textContent = 'As senhas devem ser iguais e válidas.';
+        return;
+      }
+
+      sessionStorage.setItem('usuarioNome', nome || 'Usuário Money');
+      window.location.href = 'otp.html';
+    }
+  </script>
+</body>
+</html>

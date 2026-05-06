@@ -1,0 +1,204 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OTP</title>
+  <style>
+    :root {
+      --bg: #08122b;
+      --surface: rgba(255,255,255,0.08);
+      --text: #eef3ff;
+      --muted: #9fb2d3;
+      --accent: #2f8cff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      background: radial-gradient(circle at top right, rgba(47,140,255,0.16), transparent 24%),
+                  linear-gradient(180deg, #08122b 0%, #0d1c38 100%);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+    }
+
+    .screen {
+      width: min(380px, 100%);
+      background: #0d1b36;
+      border-radius: 36px;
+      overflow: hidden;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.28);
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      padding: 24px;
+    }
+
+    .back {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      display: grid;
+      place-items: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 0 24px 16px;
+      display: grid;
+      gap: 16px;
+      text-align: center;
+    }
+
+    .illustration {
+      width: 140px;
+      height: 140px;
+      margin: 0 auto;
+      border-radius: 34px;
+      background: radial-gradient(circle at top left, rgba(47,140,255,0.3), transparent),
+                  rgba(255,255,255,0.05);
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .illustration::after {
+      content: '\2714';
+      font-size: 2.8rem;
+      color: #64d5ff;
+    }
+
+    .hero h1 {
+      font-size: 2rem;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.95rem;
+    }
+
+    .content {
+      padding: 0 24px 24px;
+      display: grid;
+      gap: 18px;
+    }
+
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      text-align: center;
+    }
+
+    .otp-inputs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      justify-items: center;
+    }
+
+    .otp-inputs input {
+      width: 100%;
+      padding: 18px 0;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      font-size: 1.2rem;
+      text-align: center;
+    }
+
+    .note {
+      color: var(--muted);
+      font-size: 0.9rem;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .button-primary {
+      width: 100%;
+      border: none;
+      border-radius: 18px;
+      padding: 16px;
+      background: linear-gradient(135deg, var(--accent), #1c5bbd);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .error {
+      color: #ff7a7a;
+      min-height: 18px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main class="screen">
+    <div class="header">
+      <button class="back" onclick="window.history.back()">←</button>
+    </div>
+
+    <section class="hero">
+      <div class="illustration"></div>
+      <h1>Código de verificação</h1>
+      <p>Código enviado para: <strong>(81) 9 445 444 55</strong></p>
+    </section>
+
+    <section class="content">
+      <div class="otp-inputs">
+        <input type="text" id="d1" maxlength="1" oninput="autoNext(this, 'd2')">
+        <input type="text" id="d2" maxlength="1" oninput="autoNext(this, 'd3')">
+        <input type="text" id="d3" maxlength="1" oninput="autoNext(this, 'd4')">
+        <input type="text" id="d4" maxlength="1" oninput="autoNext(this, '')">
+      </div>
+      <div id="erroOtp" class="error"></div>
+      <p class="note">Não recebeu seu número de verificação? Envie novamente.</p>
+      <button class="button-primary" onclick="verificarOtp()">Verificar</button>
+    </section>
+  </main>
+
+  <script>
+    function autoNext(element, nextId) {
+      if (element.value.length === 1 && nextId) {
+        document.getElementById(nextId).focus();
+      }
+    }
+
+    function verificarOtp() {
+      const code = [
+        document.getElementById('d1').value,
+        document.getElementById('d2').value,
+        document.getElementById('d3').value,
+        document.getElementById('d4').value,
+      ].join('');
+
+      const erro = document.getElementById('erroOtp');
+      erro.textContent = '';
+
+      if (code === '1234') {
+        window.location.href = 'home.html';
+      } else {
+        erro.textContent = 'Código incorreto. Tente novamente.';
+      }
+    }
+  </script>
+</body>
+</html>
